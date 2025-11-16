@@ -58,6 +58,19 @@
         # HOST DEFINITIONS - Individual server configurations
         # ========================================================================
 
+
+        main = {
+          deployment = {
+            targetHost = hosts.main.ip;
+            targetUser = hosts.main.user;
+            tags = hosts.main.tags;
+          };
+
+          imports = [
+            ./hosts/RP_MAIN/configuration.nix
+          ];
+        };
+
         alpha = {
           deployment = {
             targetHost = hosts.alpha.ip;
