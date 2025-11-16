@@ -32,13 +32,16 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  #Ensures that the nixpgs Path is the same as the one in the Flake.
+  #Used for the configuration of nixd (LSP)
+  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
   # ============================================================================
   # USER MANAGEMENT
   # ============================================================================
 
-  users.users.logan = {
+  users.users.areeyepee = {
     isNormalUser = true;
-    description = "Logan Donley";
+    description = "Raphael Pertler";
     extraGroups = [
       "networkmanager"
       "wheel"
@@ -88,7 +91,92 @@
     neovim
     git
     wget
+
+    alejandra
+    nixd
+
+    tlrc
+
+    jujutsu
+    lazyjj
   ];
+
+
+  # ============================================================================
+  # PROGRAMS
+  # ============================================================================
+  programs = {
+
+          ssh.startAgent = true; # Start the ssh-agent automatically
+
+    fish = {
+      enable = true;
+      shellAliases = {
+        ez = "eza --color=always --group-directories-first --icons=always";
+        ezl = "eza --long --header --tree --level=2 --all --group-directories-first --no-user --no-permissions --no-time";
+      };
+    };
+
+    nh = {
+      enable = true;
+
+      #flake = "/home/raphael/NIX/NIXOS/NixLaptop/"; String to the default Flake that nh should use for (e.g nh os switch flake)
+
+      clean = {
+        enable = true;
+
+        extraArgs = "--keep 5 --keep-since 14d";
+      };
+    };
+
+    zoxide = {
+      enable = true;
+
+      enableFishIntegration = true;
+    };
+
+    fzf = {
+      fuzzyCompletion = true;
+    };
+
+    yazi = {
+      enable = true;
+    };
+
+    bat = {
+      enable = true;
+
+      extraPackages = with pkgs.bat-extras; [core];
+    };
+
+    git = {
+      enable = true;
+
+      config = {
+        user.name = "areeyepee";
+
+        user.email = "rpServer@proton.me";
+
+        init.defaultBranch = "main";
+      };
+    };
+
+    lazygit = {
+      enable = true;
+    };
+
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+      enableFishIntegration = true;
+    };
+  };
+
+  };
+
+
+
+
 
   # ============================================================================
   # LOCALIZATION & TIMEZONE
