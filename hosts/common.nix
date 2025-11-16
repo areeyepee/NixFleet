@@ -49,6 +49,7 @@
 
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMzLokg14/USYIlrHwqWavA3DVPiLk+l9PlqwSi3l8Pa logan@franklin"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMIbDuE4vTiYGyYtNXuBGU/Duu5yQqKuH3MwcMDIbavx raphaelpertlerdse@gmail.com" #Desktop-0001
     ];
   };
 
